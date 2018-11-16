@@ -12,67 +12,79 @@ contract Governance {
         string url;
     }
 
+    // Delegator
+    struct Delegator {
+        address owner;
+        uint256 value;
+    }
+
     // 0: round to blockHeight mapping.
     uint256[] public roundHeight;
 
     // 1: nodes.
     Node[] public nodes;
 
-    // 2: stores the array index of nodes + 1
-    mapping(address => uint256) public offset;
+    // 2: stores the array index of nodes + 1.
+    mapping(address => int256) public nodesOffset;
 
-    // 3: CRS.
+    // 3: delegators.
+    mapping(address => Delegator[]) public delegators;
+
+    // 4: stores the array index of nodes + 1 for delgators.
+    mapping(address => mapping(address => int256)) public delegatorsOffset;
+
+    // 5: CRS.
     bytes32[] public crs;
 
-    // 4: dkgMasterPublicKeys
+    // 6: dkgMasterPublicKeys
     bytes[][] public dkgMasterPublicKeys;
 
-    // 5: dkgComplaints
+    // 7: dkgComplaints
     bytes[][] public dkgComplaints;
 
-    // 6: dkgFinalizeds
+    // 8: dkgFinalizeds
     mapping(address => bool)[] public dkgFinalizeds;
 
-    // 7: dkgFinalizedsCount
+    // 9: dkgFinalizedsCount
     uint256[] public dkgFinalizedsCount;
 
-    // 8: owner address.
+    // 10: owner address.
     address public owner;
 
-    // 9: minStake
+    // 11: minStake
     uint256 public minStake;
 
-    // 10: blockReward.
+    // 12: blockReward.
     uint256 public blockReward;
 
-    // 11: blockGasLimit.
+    // 13: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 12: Network related.
+    // 14: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 13
+    // 15
     uint256 public lambdaBA;
-    // 14
+    // 16
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 15
+    // 17
     uint256 public k;
-    // 16
+    // 18
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 17
+    // 19
     uint256 public notarySetSize;
-    // 18
+    // 20
     uint256 public dkgSetSize;
 
     // Time related.
-    // 19
+    // 21
     uint256 public roundInterval;
-    // 20
+    // 22
     uint256 public minBlockInterval;
 
     // ----------
@@ -83,11 +95,15 @@ contract Governance {
         _;
     }
 
-    // ----------
+    // -------
     // Events.
-    // ----------
+    // -------
     event ConfigurationChanged();
-    event CRSProposed(uint256 indexed round, bytes32 crs);
+    event CRSProposed(uint256 indexed Round, bytes32 CRS);
+    event Staked(address indexed NodeAddress);
+    event Unstaked(address indexed NodeAddress);
+    event Delegated(address indexed NodeAddress, address indexed DelegatorAddress, uint256 Amount);
+    event Undelegated(address indexed NodeAddress, address indexed DelegatorAddress);
 
     // transferOwnership()
     function transferOwnership(address newOwner) onlyOwner {
@@ -110,6 +126,14 @@ contract Governance {
         public onlyOwner {
     }
 
+    // Return number of nodes.
+    function nodesLength() view public returns (uint256) {
+    }
+
+    // Return number of delegators for a given  node.
+    function delegatorsLength(address NodeAddress) view public returns (uint256) {
+    }
+
     // SnapshotRound(round, height)
     function snapshotRound(uint256 Round, uint256 Height) public {
     }
@@ -130,7 +154,7 @@ contract Governance {
     function addDKGFinalize(uint256 Round, bytes Finalize) public {
     }
 
-    // Stake(public_key)
+    // Stake(public_key, name, email, location, url)
     function stake(bytes PublicKey, string Name, string Email,
                    string Location, string Url) public payable {
     }
@@ -139,7 +163,11 @@ contract Governance {
     function unstake() public {
     }
 
-    // Return number of nodes.
-    function nodesLength() view public returns (uint256) {
+    // Delegate(node)
+    function delegate(address NodeAddress) public payable {
+    }
+
+    // Undelegate(node)
+    function undelegate(address NodeAddress) public {
     }
 }
