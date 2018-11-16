@@ -39,37 +39,40 @@ contract Governance {
     // 8: owner address.
     address public owner;
 
-    // 9: blockReward.
+    // 9: minStake
+    uint256 public minStake;
+
+    // 10: blockReward.
     uint256 public blockReward;
 
-    // 10: blockGasLimit.
+    // 11: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 11: Network related.
+    // 12: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 12
-    uint256 public lambdaBA;
     // 13
+    uint256 public lambdaBA;
+    // 14
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 14
-    uint256 public k;
     // 15
+    uint256 public k;
+    // 16
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 16
-    uint256 public notarySetSize;
     // 17
+    uint256 public notarySetSize;
+    // 18
     uint256 public dkgSetSize;
 
     // Time related.
-    // 18
-    uint256 public roundInterval;
     // 19
+    uint256 public roundInterval;
+    // 20
     uint256 public minBlockInterval;
 
     // ----------
@@ -92,6 +95,7 @@ contract Governance {
 
     // UpdateConfiguration(...)
     function updateConfiguration(
+        uint256 MinStake,
         uint256 BlockReward,
         uint256 BlockGasLimit,
         uint256 NumChains,
