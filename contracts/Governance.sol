@@ -1,7 +1,7 @@
 pragma solidity ^0.4.11;
 
 contract Governance {
-    // Nodes
+    // Nodes.
     struct Node {
         address owner;
         bytes publicKey;
@@ -10,12 +10,14 @@ contract Governance {
         string email;
         string location;
         string url;
+        bool unstaked;
     }
 
-    // Delegator
+    // Delegator.
     struct Delegator {
         address owner;
         uint256 value;
+        uint256 undelegated_at;
     }
 
     // 0: round to blockHeight mapping.
@@ -54,37 +56,40 @@ contract Governance {
     // 11: minStake
     uint256 public minStake;
 
-    // 12: blockReward.
+    // 12: lockupPeriod
+    uint256 public lockupPeriod;
+
+    // 13: blockReward.
     uint256 public blockReward;
 
-    // 13: blockGasLimit.
+    // 14: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 14: Network related.
+    // 15: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 15
-    uint256 public lambdaBA;
     // 16
+    uint256 public lambdaBA;
+    // 17
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 17
-    uint256 public k;
     // 18
+    uint256 public k;
+    // 19
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 19
-    uint256 public notarySetSize;
     // 20
+    uint256 public notarySetSize;
+    // 21
     uint256 public dkgSetSize;
 
     // Time related.
-    // 21
-    uint256 public roundInterval;
     // 22
+    uint256 public roundInterval;
+    // 23
     uint256 public minBlockInterval;
 
     // ----------
@@ -112,6 +117,7 @@ contract Governance {
     // UpdateConfiguration(...)
     function updateConfiguration(
         uint256 MinStake,
+        uint256 LockupPeriod,
         uint256 BlockReward,
         uint256 BlockGasLimit,
         uint256 NumChains,
@@ -169,5 +175,9 @@ contract Governance {
 
     // Undelegate(node)
     function undelegate(address NodeAddress) public {
+    }
+
+    // Withdraw(node)
+    function withdraw(address NodeAddress) public {
     }
 }
