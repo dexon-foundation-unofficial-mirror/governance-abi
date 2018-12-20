@@ -44,52 +44,58 @@ contract Governance {
     // 7: dkgComplaints
     bytes[][] public dkgComplaints;
 
-    // 8: dkgFinalizeds
+    // 8: dkgMPKReadys
+    mapping(address => bool)[] public dkgMPKReadys;
+
+    // 9: dkgMPKReadysCount
+    uint256[] public dkgMPKReadysCount;
+
+    // 10: dkgFinalizeds
     mapping(address => bool)[] public dkgFinalizeds;
 
-    // 9: dkgFinalizedsCount
+    // 11: dkgFinalizedsCount
     uint256[] public dkgFinalizedsCount;
 
-    // 10: owner address.
+    // 12: owner address.
     address public owner;
 
-    // 11: minStake
+    // 13: minStake
     uint256 public minStake;
 
-    // 12: lockupPeriod
+    // 14: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 13: blockReward.
+    // 15: blockReward.
     uint256 public blockReward;
 
-    // 14: blockGasLimit.
+    // 16: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 15: Network related.
+    // 17: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 16
+    // 18
     uint256 public lambdaBA;
-    // 17
+    // 19
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 18
+    // 20
     uint256 public k;
-    // 19
+    // 21
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 20
+    // 22
     uint256 public notarySetSize;
-    // 21
+    // 23
     uint256 public dkgSetSize;
 
     // Time related.
-    // 22
+    // 24
     uint256 public roundInterval;
-    // 23
+    // 25
     uint256 public minBlockInterval;
 
     // ----------
@@ -154,6 +160,10 @@ contract Governance {
 
     // AddDKGMasterPublicKey(round, key)
     function addDKGMasterPublicKey(uint256 Round, bytes PublicKey) public {
+    }
+
+    // AddDKGMPKReady(round, ready)
+    function addDKGMPKReady(uint256 Round, bytes MPKReady) public {
     }
 
     // AddDKGFinalize(round, finalize)
