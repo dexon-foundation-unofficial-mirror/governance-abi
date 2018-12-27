@@ -6,6 +6,7 @@ contract Governance {
         address owner;
         bytes publicKey;
         uint256 staked;
+        uint256 fined;
         string name;
         string email;
         string location;
@@ -189,5 +190,9 @@ contract Governance {
 
     // Withdraw(node)
     function withdraw(address NodeAddress) public {
+    }
+
+    // PayFine(node)
+    function payFine(address NodeAddress) public payable {
     }
 }
