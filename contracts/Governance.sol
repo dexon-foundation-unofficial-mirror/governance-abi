@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.5.0;
 
 contract Governance {
     // Nodes.
@@ -21,83 +21,99 @@ contract Governance {
         uint256 undelegated_at;
     }
 
+    // ReportType.
+    enum ReportType {
+        INVALID_DKG,
+        FORK_VOTE,
+        FORK_BLOCK
+    }
+
     // 0: round to blockHeight mapping.
     uint256[] public roundHeight;
 
     // 1: nodes.
     Node[] public nodes;
 
-    // 2: stores the array index of nodes + 1.
-    mapping(address => int256) public nodesOffset;
+    // 2: stores the array index + 1 of nodes by address.
+    mapping(address => int256) public nodesOffsetByAddress;
 
-    // 3: delegators.
+    // 3: stores the array index + 1 of nodes by ID.
+    mapping(bytes32 => int256) public nodesOffsetByID;
+
+    // 4: delegators.
     mapping(address => Delegator[]) public delegators;
 
-    // 4: stores the array index of nodes + 1 for delgators.
+    // 5: stores the array index + 1 of nodes for delgators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
-    // 5: CRS.
+    // 6: CRS.
     bytes32[] public crs;
 
-    // 6: dkgMasterPublicKeys
+    // 7: dkgMasterPublicKeys
     bytes[][] public dkgMasterPublicKeys;
 
-    // 7: dkgComplaints
+    // 8: dkgComplaints
     bytes[][] public dkgComplaints;
 
-    // 8: dkgMPKReadys
+    // 9: dkgMPKReadys
     mapping(address => bool)[] public dkgMPKReadys;
 
-    // 9: dkgMPKReadysCount
+    // 10: dkgMPKReadysCount
     uint256[] public dkgMPKReadysCount;
 
-    // 10: dkgFinalizeds
+    // 11: dkgFinalizeds
     mapping(address => bool)[] public dkgFinalizeds;
 
-    // 11: dkgFinalizedsCount
+    // 12: dkgFinalizedsCount
     uint256[] public dkgFinalizedsCount;
 
-    // 12: owner address.
+    // 13: owner address.
     address public owner;
 
-    // 13: minStake
+    // 14: minStake
     uint256 public minStake;
 
-    // 14: lockupPeriod
+    // 15: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 15: blockReward.
+    // 16: blockReward.
     uint256 public blockReward;
 
-    // 16: blockGasLimit.
+    // 17: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 17: Network related.
+    // 18: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 18
-    uint256 public lambdaBA;
     // 19
+    uint256 public lambdaBA;
+    // 20
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 20
-    uint256 public k;
     // 21
+    uint256 public k;
+    // 22
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 22
-    uint256 public notarySetSize;
     // 23
+    uint256 public notarySetSize;
+    // 24
     uint256 public dkgSetSize;
 
     // Time related.
-    // 24
-    uint256 public roundInterval;
     // 25
+    uint256 public roundInterval;
+    // 26
     uint256 public minBlockInterval;
+
+    // 27: Fine value.
+    uint256[] public fineValues;
+
+    // 28: Fined records.
+    mapping(bytes32 => bool) public finedRecords;
 
     // ----------
     // Modifiers.
@@ -118,7 +134,7 @@ contract Governance {
     event Undelegated(address indexed NodeAddress, address indexed DelegatorAddress);
 
     // transferOwnership()
-    function transferOwnership(address newOwner) onlyOwner {
+    function transferOwnership(address newOwner) public onlyOwner {
     }
 
     // UpdateConfiguration(...)
@@ -135,7 +151,8 @@ contract Governance {
         uint256 NotarySetSize,
         uint256 DKGSetSize,
         uint256 RoundInterval,
-        uint256 MinBlockInterval)
+        uint256 MinBlockInterval,
+        uint256[] memory FineValues)
         public onlyOwner {
     }
 
@@ -152,28 +169,29 @@ contract Governance {
     }
 
     // ProposeCRS(signedCRS)
-    function proposeCRS(uint256 Round, bytes SignedCRS) public {
+    function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
 
     // AddDKGComplaint(round, complaint)
-    function addDKGComplaint(uint256 Round, bytes Complaint) public {
+    function addDKGComplaint(uint256 Round, bytes memory Complaint) public {
     }
 
     // AddDKGMasterPublicKey(round, key)
-    function addDKGMasterPublicKey(uint256 Round, bytes PublicKey) public {
+    function addDKGMasterPublicKey(uint256 Round, bytes memory PublicKey) public {
     }
 
     // AddDKGMPKReady(round, ready)
-    function addDKGMPKReady(uint256 Round, bytes MPKReady) public {
+    function addDKGMPKReady(uint256 Round, bytes memory MPKReady) public {
     }
 
     // AddDKGFinalize(round, finalize)
-    function addDKGFinalize(uint256 Round, bytes Finalize) public {
+    function addDKGFinalize(uint256 Round, bytes memory Finalize) public {
     }
 
     // Stake(public_key, name, email, location, url)
-    function stake(bytes PublicKey, string Name, string Email,
-                   string Location, string Url) public payable {
+    function stake(bytes memory PublicKey, string memory Name,
+                   string memory Email, string memory Location,
+                   string memory Url) public payable {
     }
 
     // Unstake()
@@ -194,5 +212,9 @@ contract Governance {
 
     // PayFine(node)
     function payFine(address NodeAddress) public payable {
+    }
+
+    // Report(enum type, bytes[] payloads)
+    function report(uint256 Type, bytes memory Arg1, bytes memory Arg2) public {
     }
 }
