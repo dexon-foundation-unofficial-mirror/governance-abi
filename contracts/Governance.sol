@@ -132,6 +132,10 @@ contract Governance {
     event Unstaked(address indexed NodeAddress);
     event Delegated(address indexed NodeAddress, address indexed DelegatorAddress, uint256 Amount);
     event Undelegated(address indexed NodeAddress, address indexed DelegatorAddress);
+    event Withdrawn(address indexed NodeAddress, uint256 Amount);
+    event ForkReported(address indexed NodeAddress, uint256 Type, bytes Arg1, bytes Arg2);
+    event Fined(address indexed NodeAddress, uint256 Amount);
+    event FinePaid(address indexed NodeAddress, uint256 Amount);
 
     // transferOwnership()
     function transferOwnership(address newOwner) public onlyOwner {
