@@ -81,43 +81,49 @@ contract Governance {
     // 17: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 18: blockReward.
-    uint256 public blockReward;
+    // 18: miningVelocity.
+    uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 19: blockGasLimit.
+    // 19: nextHalvingSupply.
+    uint256 public nextHalvingSupply;
+
+    // 20: lastHalvedAmount.
+    uint256 public lastHalvedAmount;
+
+    // 21: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 20: Network related.
+    // 22: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 21
+    // 23
     uint256 public lambdaBA;
-    // 22
+    // 24
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 23
+    // 25
     uint256 public k;
-    // 24
-    uint256 public phiRatio;  // stored as PhiRatio * 10^6
+    // 26
+    uint256 public phiRatio;  // stored as PhiRatio * 10^8
 
     // Set related.
-    // 25
+    // 27
     uint256 public notarySetSize;
-    // 26
+    // 28
     uint256 public dkgSetSize;
 
     // Time related.
-    // 27
+    // 29
     uint256 public roundInterval;
-    // 28
+    // 30
     uint256 public minBlockInterval;
 
-    // 29: Fine value.
+    // 31: Fine value.
     uint256[] public fineValues;
 
-    // 30: Fined records.
+    // 32: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
@@ -150,7 +156,9 @@ contract Governance {
     function updateConfiguration(
         uint256 MinStake,
         uint256 LockupPeriod,
-        uint256 BlockReward,
+        uint256 MiningVelocity,
+        uint256 NextHalvingSupply,
+        uint256 LastHalvingAmount,
         uint256 BlockGasLimit,
         uint256 NumChains,
         uint256 LambdaBA,
