@@ -11,7 +11,6 @@ contract Governance {
         string email;
         string location;
         string url;
-        bool unstaked;
     }
 
     // Delegator.
