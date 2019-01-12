@@ -31,88 +31,94 @@ contract Governance {
     // 0: round to blockHeight mapping.
     uint256[] public roundHeight;
 
-    // 1: nodes.
+    // 1: totalSupply
+    uint256 public totalSupply;
+
+    // 2: totalStaked.
+    uint256 public totalStaked;
+
+    // 3: nodes.
     Node[] public nodes;
 
-    // 2: stores the array index + 1 of nodes by address.
+    // 4: stores the array index + 1 of nodes by address.
     mapping(address => int256) public nodesOffsetByAddress;
 
-    // 3: stores the array index + 1 of nodes by ID.
+    // 5: stores the array index + 1 of nodes by ID.
     mapping(bytes32 => int256) public nodesOffsetByID;
 
-    // 4: delegators.
+    // 6: delegators.
     mapping(address => Delegator[]) public delegators;
 
-    // 5: stores the array index + 1 of nodes for delgators.
+    // 7: stores the array index + 1 of nodes for delgators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
-    // 6: CRS.
+    // 8: CRS.
     bytes32[] public crs;
 
-    // 7: dkgMasterPublicKeys
+    // 9: dkgMasterPublicKeys
     bytes[][] public dkgMasterPublicKeys;
 
-    // 8: dkgComplaints
+    // 10: dkgComplaints
     bytes[][] public dkgComplaints;
 
-    // 9: dkgMPKReadys
+    // 11: dkgMPKReadys
     mapping(address => bool)[] public dkgMPKReadys;
 
-    // 10: dkgMPKReadysCount
+    // 12: dkgMPKReadysCount
     uint256[] public dkgMPKReadysCount;
 
-    // 11: dkgFinalizeds
+    // 13: dkgFinalizeds
     mapping(address => bool)[] public dkgFinalizeds;
 
-    // 12: dkgFinalizedsCount
+    // 14: dkgFinalizedsCount
     uint256[] public dkgFinalizedsCount;
 
-    // 13: owner address.
+    // 15: owner address.
     address public owner;
 
-    // 14: minStake
+    // 16: minStake
     uint256 public minStake;
 
-    // 15: lockupPeriod
+    // 17: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 16: blockReward.
+    // 18: blockReward.
     uint256 public blockReward;
 
-    // 17: blockGasLimit.
+    // 19: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 18: Network related.
+    // 20: Network related.
     uint256 public numChains;
 
     // Lambda related.
-    // 19
+    // 21
     uint256 public lambdaBA;
-    // 20
+    // 22
     uint256 public lambdaDKG;
 
     // Total ordering related.
-    // 21
+    // 23
     uint256 public k;
-    // 22
+    // 24
     uint256 public phiRatio;  // stored as PhiRatio * 10^6
 
     // Set related.
-    // 23
+    // 25
     uint256 public notarySetSize;
-    // 24
+    // 26
     uint256 public dkgSetSize;
 
     // Time related.
-    // 25
+    // 27
     uint256 public roundInterval;
-    // 26
+    // 28
     uint256 public minBlockInterval;
 
-    // 27: Fine value.
+    // 29: Fine value.
     uint256[] public fineValues;
 
-    // 28: Fined records.
+    // 30: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
