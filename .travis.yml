@@ -1,0 +1,10 @@
+dist: xenial
+sudo: required
+language: node_js
+node_js:
+- 10.14.1
+before_install:
+- openssl aes-256-cbc -K $encrypted_576d8886d7a3_key -iv $encrypted_576d8886d7a3_iv
+  -in ci/wiki_deploy_key.enc -out ci/wiki_deploy_key -d
+script:
+- truffle compile
