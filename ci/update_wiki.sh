@@ -19,7 +19,7 @@ touch wiki.md
 while IFE= read -r line; do
 	if [[ $line == *"ABI AUTOGEN START"* ]]; then
 		abi=true
-		printf "<!-- [[ABI AUTOGEN START]] -->\n\`\`\`\n${newABI}\n\`\`\`\n<!-- [[ABI AUTOGEN START]] -->\n" >> wiki.md
+		printf "<!-- [[ABI AUTOGEN START]] -->\n\`\`\`\n${newABI}\n\`\`\`\n<!-- [[ABI AUTOGEN END]] -->\n" >> wiki.md
 	fi
 	if [[ $abi == true && $line == *"ABI AUTOGEN END"* ]]; then
 		abi=false
