@@ -181,10 +181,6 @@ contract Governance {
     function delegatorsLength(address NodeAddress) view public returns (uint256) {
     }
 
-    // SnapshotRound(round, height)
-    function snapshotRound(uint256 Round, uint256 Height) public {
-    }
-
     // ProposeCRS(signedCRS)
     function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
