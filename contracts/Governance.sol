@@ -126,6 +126,9 @@ contract Governance {
     // 32: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
+    // 33: DKG reset count
+    uint256[] public DKGResetCount;
+
     // ----------
     // Modifiers.
     // ----------
@@ -148,6 +151,7 @@ contract Governance {
     event ForkReported(address indexed NodeAddress, uint256 Type, bytes Arg1, bytes Arg2);
     event Fined(address indexed NodeAddress, uint256 Amount);
     event FinePaid(address indexed NodeAddress, uint256 Amount);
+    event DKGReset(uint256 indexed Round, uint256 BlockHeight);
 
     // transferOwnership()
     function transferOwnership(address newOwner) public onlyOwner {
@@ -230,5 +234,9 @@ contract Governance {
 
     // Report(enum type, bytes[] payloads)
     function report(uint256 Type, bytes memory Arg1, bytes memory Arg2) public {
+    }
+
+    // ResetDKG(newSignedCRS)
+    function resetDKG(bytes memory NewSignedCRS) public {
     }
 }
