@@ -93,40 +93,31 @@ contract Governance {
     // 21: blockGasLimit.
     uint256 public blockGasLimit;
 
-    // 22: Network related.
-    uint256 public numChains;
-
     // Lambda related.
-    // 23
+    // 22
     uint256 public lambdaBA;
-    // 24
+    // 23
     uint256 public lambdaDKG;
 
-    // Total ordering related.
-    // 25
-    uint256 public k;
-    // 26
-    uint256 public phiRatio;  // stored as PhiRatio * 10^8
-
     // Set related.
-    // 27
+    // 24
     uint256 public notarySetSize;
-    // 28
+    // 25
     uint256 public dkgSetSize;
 
-    // Time related.
-    // 29
-    uint256 public roundInterval;
-    // 30
+    // 26: roundLength.
+    uint256 public roundLength;
+
+    // 27: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 31: Fine value.
+    // 28: Fine value.
     uint256[] public fineValues;
 
-    // 32: Fined records.
+    // 29: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
-    // 33: DKG reset count
+    // 30: DKG reset count
     uint256[] public DKGResetCount;
 
     // ----------
@@ -165,14 +156,11 @@ contract Governance {
         uint256 NextHalvingSupply,
         uint256 LastHalvingAmount,
         uint256 BlockGasLimit,
-        uint256 NumChains,
         uint256 LambdaBA,
         uint256 LambdaDKG,
-        uint256 K,
-        uint256 PhiRatio,
         uint256 NotarySetSize,
         uint256 DKGSetSize,
-        uint256 RoundInterval,
+        uint256 RoundLength,
         uint256 MinBlockInterval,
         uint256[] memory FineValues)
         public onlyOwner {
