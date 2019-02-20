@@ -120,6 +120,9 @@ contract Governance {
     // 30: DKG reset count
     uint256[] public DKGResetCount;
 
+    // 31: min gas price.
+    uint256 public minGasPrice;
+
     // ----------
     // Modifiers.
     // ----------
@@ -162,7 +165,8 @@ contract Governance {
         uint256 DKGSetSize,
         uint256 RoundLength,
         uint256 MinBlockInterval,
-        uint256[] memory FineValues)
+        uint256[] memory FineValues,
+        uint256 MinGasPrice)
         public onlyOwner {
     }
 
