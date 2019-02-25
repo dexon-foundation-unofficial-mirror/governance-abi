@@ -52,25 +52,25 @@ contract Governance {
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
     // 8: CRS.
-    bytes32[] public crs;
+    bytes32 public crs;
 
     // 9: dkgMasterPublicKeys
-    bytes[][] public dkgMasterPublicKeys;
+    bytes[] public dkgMasterPublicKeys;
 
     // 10: dkgComplaints
-    bytes[][] public dkgComplaints;
+    bytes[] public dkgComplaints;
 
     // 11: dkgMPKReadys
-    mapping(address => bool)[] public dkgMPKReadys;
+    mapping(address => bool) public dkgMPKReadys;
 
     // 12: dkgMPKReadysCount
-    uint256[] public dkgMPKReadysCount;
+    uint256 public dkgMPKReadysCount;
 
     // 13: dkgFinalizeds
-    mapping(address => bool)[] public dkgFinalizeds;
+    mapping(address => bool) public dkgFinalizeds;
 
     // 14: dkgFinalizedsCount
-    uint256[] public dkgFinalizedsCount;
+    uint256 public dkgFinalizedsCount;
 
     // 15: owner address.
     address public owner;
@@ -178,7 +178,7 @@ contract Governance {
     function delegatorsLength(address NodeAddress) view public returns (uint256) {
     }
 
-    // ProposeCRS(signedCRS)
+    // ProposeCRS(round, signedCRS)
     function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
 
