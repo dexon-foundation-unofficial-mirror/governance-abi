@@ -51,76 +51,82 @@ contract Governance {
     // 7: stores the array index + 1 of nodes for delgators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
-    // 8: CRS.
-    bytes32[] public crs;
+    // 8: CRSRound.
+    uint256 public crsRound;
 
-    // 9: dkgMasterPublicKeys
-    bytes[][] public dkgMasterPublicKeys;
+    // 9: CRS.
+    bytes32 public crs;
 
-    // 10: dkgComplaints
-    bytes[][] public dkgComplaints;
+    // 10: DKGRound.
+    uint256 public dkgRound;
 
-    // 11: dkgMPKReadys
-    mapping(address => bool)[] public dkgMPKReadys;
+    // 11: dkgMasterPublicKeys
+    bytes[] public dkgMasterPublicKeys;
 
-    // 12: dkgMPKReadysCount
-    uint256[] public dkgMPKReadysCount;
+    // 12: dkgComplaints
+    bytes[] public dkgComplaints;
 
-    // 13: dkgFinalizeds
-    mapping(address => bool)[] public dkgFinalizeds;
+    // 13: dkgMPKReadys
+    mapping(address => bool) public dkgMPKReadys;
 
-    // 14: dkgFinalizedsCount
-    uint256[] public dkgFinalizedsCount;
+    // 14: dkgMPKReadysCount
+    uint256 public dkgMPKReadysCount;
 
-    // 15: owner address.
+    // 15: dkgFinalizeds
+    mapping(address => bool) public dkgFinalizeds;
+
+    // 16: dkgFinalizedsCount
+    uint256 public dkgFinalizedsCount;
+
+    // 17: owner address.
     address public owner;
 
-    // 16: minStake
+    // 18: minStake
     uint256 public minStake;
 
-    // 17: lockupPeriod
+    // 19: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 18: miningVelocity.
+    // 20: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 19: nextHalvingSupply.
+    // 21: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 20: lastHalvedAmount.
+    // 22: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 21: blockGasLimit.
+    // 23: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 22
+    // 24
     uint256 public lambdaBA;
-    // 23
+    // 25
     uint256 public lambdaDKG;
 
     // Set related.
-    // 24
+    // 26
     uint256 public notarySetSize;
-    // 25
+    // 27
     uint256 public dkgSetSize;
 
-    // 26: roundLength.
+    // 28: roundLength.
     uint256 public roundLength;
 
-    // 27: minBlockInterval.
+    // 29: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 28: Fine value.
+    // 30: Fine value.
     uint256[] public fineValues;
 
-    // 29: Fined records.
+    // 31: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
-    // 30: DKG reset count
+    // 32: DKG reset count
     uint256[] public DKGResetCount;
 
-    // 31: min gas price.
+    // 33: min gas price.
     uint256 public minGasPrice;
 
     // ----------
@@ -178,7 +184,7 @@ contract Governance {
     function delegatorsLength(address NodeAddress) view public returns (uint256) {
     }
 
-    // ProposeCRS(signedCRS)
+    // ProposeCRS(round, signedCRS)
     function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
 
