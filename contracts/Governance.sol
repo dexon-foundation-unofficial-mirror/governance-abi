@@ -42,8 +42,8 @@ contract Governance {
     // 4: stores the array index + 1 of nodes by address.
     mapping(address => int256) public nodesOffsetByAddress;
 
-    // 5: stores the array index + 1 of nodes by ID.
-    mapping(bytes32 => int256) public nodesOffsetByID;
+    // 5: stores the array index + 1 of nodes by address represented by node key.
+    mapping(address => int256) public nodesOffsetByNodeKeyAddress;
 
     // 6: delegators.
     mapping(address => Delegator[]) public delegators;
