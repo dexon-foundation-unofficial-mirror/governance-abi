@@ -48,7 +48,7 @@ contract Governance {
     // 6: delegators.
     mapping(address => Delegator[]) public delegators;
 
-    // 7: stores the array index + 1 of nodes for delgators.
+    // 7: stores the array index + 1 of nodes for delegators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
     // 8: CRS.
