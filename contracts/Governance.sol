@@ -155,9 +155,6 @@ contract Governance {
     function updateConfiguration(
         uint256 MinStake,
         uint256 LockupPeriod,
-        uint256 MiningVelocity,
-        uint256 NextHalvingSupply,
-        uint256 LastHalvingAmount,
         uint256 BlockGasLimit,
         uint256 LambdaBA,
         uint256 LambdaDKG,
