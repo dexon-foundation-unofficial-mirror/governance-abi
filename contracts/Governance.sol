@@ -51,76 +51,82 @@ contract Governance {
     // 7: stores the array index + 1 of nodes for delegators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
-    // 8: CRS.
+    // 8: CRSRound.
+    uint256 public crsRound;
+
+    // 9: CRS.
     bytes32 public crs;
 
-    // 9: dkgMasterPublicKeys
+    // 10: DKGRound.
+    uint256 public dkgRound;
+
+    // 11: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 10: dkgComplaints
+    // 12: dkgComplaints
     bytes[] public dkgComplaints;
 
-    // 11: dkgMPKReadys
+    // 13: dkgMPKReadys
     mapping(address => bool) public dkgMPKReadys;
 
-    // 12: dkgMPKReadysCount
+    // 14: dkgMPKReadysCount
     uint256 public dkgMPKReadysCount;
 
-    // 13: dkgFinalizeds
+    // 15: dkgFinalizeds
     mapping(address => bool) public dkgFinalizeds;
 
-    // 14: dkgFinalizedsCount
+    // 16: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 15: owner address.
+    // 17: owner address.
     address public owner;
 
-    // 16: minStake
+    // 18: minStake
     uint256 public minStake;
 
-    // 17: lockupPeriod
+    // 19: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 18: miningVelocity.
+    // 20: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 19: nextHalvingSupply.
+    // 21: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 20: lastHalvedAmount.
+    // 22: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 21: blockGasLimit.
+    // 23: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 22
+    // 24
     uint256 public lambdaBA;
-    // 23
+    // 25
     uint256 public lambdaDKG;
 
     // Set related.
-    // 24
+    // 26
     uint256 public notarySetSize;
-    // 25
+    // 27
     uint256 public dkgSetSize;
 
-    // 26: roundLength.
+    // 28: roundLength.
     uint256 public roundLength;
 
-    // 27: minBlockInterval.
+    // 29: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 28: Fine value.
+    // 30: Fine value.
     uint256[] public fineValues;
 
-    // 29: Fined records.
+    // 31: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
-    // 30: DKG reset count
+    // 32: DKG reset count
     uint256[] public DKGResetCount;
 
-    // 31: min gas price.
+    // 33: min gas price.
     uint256 public minGasPrice;
 
     // ----------
