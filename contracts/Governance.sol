@@ -51,80 +51,80 @@ contract Governance {
     // 7: stores the array index + 1 of nodes for delegators.
     mapping(address => mapping(address => int256)) public delegatorsOffset;
 
-    // 8: CRSRound.
+    // 8: crsRound.
     uint256 public crsRound;
 
-    // 9: CRS.
+    // 9: crs.
     bytes32 public crs;
 
-    // 10: DKGRound.
+    // 10: dkgRound.
     uint256 public dkgRound;
 
-    // 11: dkgMasterPublicKeys
+    // 11: dkgResetCount.
+    uint256[] public dkgResetCount;
+
+    // 12: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 12: dkgComplaints
+    // 13: dkgComplaints
     bytes[] public dkgComplaints;
 
-    // 13: dkgMPKReadys
+    // 14: dkgMPKReadys
     mapping(address => bool) public dkgMPKReadys;
 
-    // 14: dkgMPKReadysCount
+    // 15: dkgMPKReadysCount
     uint256 public dkgMPKReadysCount;
 
-    // 15: dkgFinalizeds
+    // 16: dkgFinalizeds
     mapping(address => bool) public dkgFinalizeds;
 
-    // 16: dkgFinalizedsCount
+    // 17: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 17: owner address.
+    // 18: owner address.
     address public owner;
 
-    // 18: minStake
+    // 19: minStake
     uint256 public minStake;
 
-    // 19: lockupPeriod
+    // 20: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 20: miningVelocity.
+    // 21: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 21: nextHalvingSupply.
+    // 22: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 22: lastHalvedAmount.
+    // 23: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 23: blockGasLimit.
+    // 24: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 24
-    uint256 public lambdaBA;
     // 25
+    uint256 public lambdaBA;
+    // 26
     uint256 public lambdaDKG;
 
     // Set related.
-    // 26
-    uint256 public notarySetSize;
     // 27
+    uint256 public notarySetSize;
+    // 28
     uint256 public dkgSetSize;
 
-    // 28: roundLength.
+    // 29: roundLength.
     uint256 public roundLength;
 
-    // 29: minBlockInterval.
+    // 30: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 30: Fine value.
+    // 31: Fine value.
     uint256[] public fineValues;
 
-    // 31: Fined records.
+    // 32: Fined records.
     mapping(bytes32 => bool) public finedRecords;
-
-    // 32: DKG reset count
-    uint256[] public DKGResetCount;
 
     // 33: min gas price.
     uint256 public minGasPrice;
