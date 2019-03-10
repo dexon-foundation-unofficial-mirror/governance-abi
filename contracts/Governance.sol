@@ -11,13 +11,8 @@ contract Governance {
         string email;
         string location;
         string url;
-    }
-
-    // Delegator.
-    struct Delegator {
-        address owner;
-        uint256 value;
-        uint256 undelegated_at;
+        uint256 unstaked;
+        uint256 unstaked_at;
     }
 
     // ReportType.
@@ -45,88 +40,82 @@ contract Governance {
     // 5: stores the array index + 1 of nodes by address represented by node key.
     mapping(address => int256) public nodesOffsetByNodeKeyAddress;
 
-    // 6: delegators.
-    mapping(address => Delegator[]) public delegators;
-
-    // 7: stores the array index + 1 of nodes for delegators.
-    mapping(address => mapping(address => int256)) public delegatorsOffset;
-
-    // 8: crsRound.
+    // 6: crsRound.
     uint256 public crsRound;
 
-    // 9: crs.
+    // 7: crs.
     bytes32 public crs;
 
-    // 10: dkgRound.
+    // 8: dkgRound.
     uint256 public dkgRound;
 
-    // 11: dkgResetCount.
+    // 9: dkgResetCount.
     uint256[] public dkgResetCount;
 
-    // 12: dkgMasterPublicKeys
+    // 10: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 13: dkgComplaints
+    // 11: dkgComplaints
     bytes[] public dkgComplaints;
 
-    // 14: dkgMPKReadys
+    // 12: dkgMPKReadys
     mapping(address => bool) public dkgMPKReadys;
 
-    // 15: dkgMPKReadysCount
+    // 13: dkgMPKReadysCount
     uint256 public dkgMPKReadysCount;
 
-    // 16: dkgFinalizeds
+    // 14: dkgFinalizeds
     mapping(address => bool) public dkgFinalizeds;
 
-    // 17: dkgFinalizedsCount
+    // 15: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 18: owner address.
+    // 16: owner address.
     address public owner;
 
-    // 19: minStake
+    // 17: minStake
     uint256 public minStake;
 
-    // 20: lockupPeriod
+    // 18: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 21: miningVelocity.
+    // 19: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 22: nextHalvingSupply.
+    // 20: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 23: lastHalvedAmount.
+    // 21: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 24: blockGasLimit.
+    // 22: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 25
+    // 23
     uint256 public lambdaBA;
-    // 26
+    // 24
     uint256 public lambdaDKG;
 
     // Set related.
-    // 27
+    // 25
     uint256 public notarySetSize;
-    // 28
+    // 26
     uint256 public dkgSetSize;
 
-    // 29: roundLength.
+    // 27: roundLength.
     uint256 public roundLength;
 
-    // 30: minBlockInterval.
+    // 28: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 31: Fine value.
+    // 29: Fine value.
     uint256[] public fineValues;
 
-    // 32: Fined records.
+    // 30: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
-    // 33: min gas price.
+    // 31: min gas price.
     uint256 public minGasPrice;
 
     // ----------
@@ -142,12 +131,11 @@ contract Governance {
     // -------
     event ConfigurationChanged();
     event CRSProposed(uint256 indexed Round, bytes32 CRS);
-    event Staked(address indexed NodeAddress);
-    event Unstaked(address indexed NodeAddress);
+    event Staked(address indexed NodeAddress, uint256 Amount);
+    event Unstaked(address indexed NodeAddress, uint256 Amount);
+    event Withdrawn(address indexed NodeAddress, uint256 Amount);
+    event NodeAdded(address indexed NodeAddress);
     event NodeRemoved(address indexed NodeAddress);
-    event Delegated(address indexed NodeAddress, address indexed DelegatorAddress, uint256 Amount);
-    event Undelegated(address indexed NodeAddress, address indexed DelegatorAddress, uint256 Amount);
-    event Withdrawn(address indexed NodeAddress, address indexed DelegatorAddress, uint256 Amount);
     event ForkReported(address indexed NodeAddress, uint256 Type, bytes Arg1, bytes Arg2);
     event Fined(address indexed NodeAddress, uint256 Amount);
     event FinePaid(address indexed NodeAddress, uint256 Amount);
@@ -177,10 +165,6 @@ contract Governance {
     function nodesLength() view public returns (uint256) {
     }
 
-    // Return number of delegators for a given  node.
-    function delegatorsLength(address NodeAddress) view public returns (uint256) {
-    }
-
     // ProposeCRS(round, signedCRS)
     function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
@@ -201,26 +185,22 @@ contract Governance {
     function addDKGFinalize(uint256 Round, bytes memory Finalize) public {
     }
 
-    // Stake(public_key, name, email, location, url)
-    function stake(bytes memory PublicKey, string memory Name,
-                   string memory Email, string memory Location,
-                   string memory Url) public payable {
+    // Register(public_key, name, email, location, url)
+    function register(bytes memory PublicKey, string memory Name,
+                      string memory Email, string memory Location,
+                      string memory Url) public payable {
+    }
+
+    // Stake()
+    function stake() public payable {
     }
 
     // Unstake()
-    function unstake() public {
+    function unstake(uint256 Amount) public {
     }
 
-    // Delegate(node)
-    function delegate(address NodeAddress) public payable {
-    }
-
-    // Undelegate(node)
-    function undelegate(address NodeAddress) public {
-    }
-
-    // Withdraw(node)
-    function withdraw(address NodeAddress) public {
+    // Withdraw()
+    function withdraw() public {
     }
 
     // PayFine(node)
