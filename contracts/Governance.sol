@@ -141,8 +141,8 @@ contract Governance {
     event FinePaid(address indexed NodeAddress, uint256 Amount);
     event DKGReset(uint256 indexed Round, uint256 BlockHeight);
 
-    // transferOwnership()
-    function transferOwnership(address newOwner) public onlyOwner {
+    // transferOwnership(newOwner)
+    function transferOwnership(address NewOwner) public onlyOwner {
     }
 
     // UpdateConfiguration(...)
@@ -159,6 +159,10 @@ contract Governance {
         uint256[] memory FineValues,
         uint256 MinGasPrice)
         public onlyOwner {
+    }
+
+    // transferNodeOwnership(newOwner)
+    function transferNodeOwnership(address NewOwner) public {
     }
 
     // Return number of nodes.
