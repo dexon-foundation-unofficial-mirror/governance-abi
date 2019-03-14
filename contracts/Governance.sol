@@ -88,35 +88,35 @@ contract Governance {
     // 21: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 22: blockGasLimit.
+    // 22: min gas price.
+    uint256 public minGasPrice;
+
+    // 23: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 23
-    uint256 public lambdaBA;
     // 24
+    uint256 public lambdaBA;
+    // 25
     uint256 public lambdaDKG;
 
     // Set related.
-    // 25
-    uint256 public notarySetSize;
     // 26
+    uint256 public notarySetSize;
+    // 27
     uint256 public dkgSetSize;
 
-    // 27: roundLength.
+    // 28: roundLength.
     uint256 public roundLength;
 
-    // 28: minBlockInterval.
+    // 29: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 29: Fine value.
+    // 30: Fine value.
     uint256[] public fineValues;
 
-    // 30: Fined records.
+    // 31: Fined records.
     mapping(bytes32 => bool) public finedRecords;
-
-    // 31: min gas price.
-    uint256 public minGasPrice;
 
     // ----------
     // Modifiers.
@@ -149,6 +149,7 @@ contract Governance {
     function updateConfiguration(
         uint256 MinStake,
         uint256 LockupPeriod,
+        uint256 MinGasPrice,
         uint256 BlockGasLimit,
         uint256 LambdaBA,
         uint256 LambdaDKG,
@@ -156,8 +157,7 @@ contract Governance {
         uint256 DKGSetSize,
         uint256 RoundLength,
         uint256 MinBlockInterval,
-        uint256[] memory FineValues,
-        uint256 MinGasPrice)
+        uint256[] memory FineValues)
         public onlyOwner {
     }
 
