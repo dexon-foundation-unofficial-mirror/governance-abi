@@ -119,19 +119,16 @@ contract Governance {
     // 31: notary set parameter: beta.
     uint256 public notaryParamBeta;  // stored as notaryParamBeta * 10^8
 
-    // 32: DKG set size.
-    uint256 public dkgSetSize;
-
-    // 33: roundLength.
+    // 32: roundLength.
     uint256 public roundLength;
 
-    // 34: minBlockInterval.
+    // 33: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 35: Fine value.
+    // 34: Fine value.
     uint256[] public fineValues;
 
-    // 36: Fined records.
+    // 35: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
