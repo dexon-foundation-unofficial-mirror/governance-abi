@@ -55,67 +55,73 @@ contract Governance {
     // 10: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 11: dkgComplaints
+    // 11: dkgMasterPublicKeyProposed
+    mapping(bytes32 => bool) public dkgMasterPublicKeyProposed;
+
+    // 12: dkgComplaints
     bytes[] public dkgComplaints;
 
-    // 12: dkgMPKReadys
+    // 13: dkgComplaintsProposed
+    mapping(bytes32 => bool) public dkgComplaintsProposed;
+
+    // 14: dkgMPKReadys
     mapping(address => bool) public dkgMPKReadys;
 
-    // 13: dkgMPKReadysCount
+    // 15: dkgMPKReadysCount
     uint256 public dkgMPKReadysCount;
 
-    // 14: dkgFinalizeds
+    // 16: dkgFinalizeds
     mapping(address => bool) public dkgFinalizeds;
 
-    // 15: dkgFinalizedsCount
+    // 17: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 16: owner address.
+    // 18: owner address.
     address public owner;
 
-    // 17: minStake
+    // 19: minStake
     uint256 public minStake;
 
-    // 18: lockupPeriod
+    // 20: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 19: miningVelocity.
+    // 21: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 20: nextHalvingSupply.
+    // 22: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 21: lastHalvedAmount.
+    // 23: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 22: min gas price.
+    // 24: min gas price.
     uint256 public minGasPrice;
 
-    // 23: blockGasLimit.
+    // 25: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 24
+    // 26
     uint256 public lambdaBA;
-    // 25
+    // 27
     uint256 public lambdaDKG;
 
     // Set related.
-    // 26
+    // 28
     uint256 public notarySetSize;
-    // 27
+    // 29
     uint256 public dkgSetSize;
 
-    // 28: roundLength.
+    // 30: roundLength.
     uint256 public roundLength;
 
-    // 29: minBlockInterval.
+    // 31: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 30: Fine value.
+    // 32: Fine value.
     uint256[] public fineValues;
 
-    // 31: Fined records.
+    // 33: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
