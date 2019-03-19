@@ -101,27 +101,34 @@ contract Governance {
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 26
+    // 26: BA.
     uint256 public lambdaBA;
-    // 27
+    // 27: DKG.
     uint256 public lambdaDKG;
 
     // Set related.
-    // 28
+    // 28: notary set size
     uint256 public notarySetSize;
-    // 29
+
+    // 29: notary set parameter: alpha.
+    uint256 public notaryParamAlpha;  // stored as notaryParamAlpha * 10^8
+
+    // 30: notary set parameter: beta.
+    uint256 public notaryParamBeta;  // stored as notaryParamBeta * 10^8
+
+    // 31: DKG set size.
     uint256 public dkgSetSize;
 
-    // 30: roundLength.
+    // 32: roundLength.
     uint256 public roundLength;
 
-    // 31: minBlockInterval.
+    // 33: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 32: Fine value.
+    // 34: Fine value.
     uint256[] public fineValues;
 
-    // 33: Fined records.
+    // 35: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
@@ -159,8 +166,8 @@ contract Governance {
         uint256 BlockGasLimit,
         uint256 LambdaBA,
         uint256 LambdaDKG,
-        uint256 NotarySetSize,
-        uint256 DKGSetSize,
+        uint256 NotaryParamAlpha,
+        uint256 NotaryParamBeta,
         uint256 RoundLength,
         uint256 MinBlockInterval,
         uint256[] memory FineValues)
