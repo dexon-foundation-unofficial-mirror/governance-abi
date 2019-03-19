@@ -187,20 +187,20 @@ contract Governance {
     function proposeCRS(uint256 Round, bytes memory SignedCRS) public {
     }
 
-    // AddDKGComplaint(round, complaint)
-    function addDKGComplaint(uint256 Round, bytes memory Complaint) public {
+    // AddDKGComplaint(complaint)
+    function addDKGComplaint(bytes memory Complaint) public {
     }
 
-    // AddDKGMasterPublicKey(round, key)
-    function addDKGMasterPublicKey(uint256 Round, bytes memory PublicKey) public {
+    // AddDKGMasterPublicKey(key)
+    function addDKGMasterPublicKey(bytes memory PublicKey) public {
     }
 
-    // AddDKGMPKReady(round, ready)
-    function addDKGMPKReady(uint256 Round, bytes memory MPKReady) public {
+    // AddDKGMPKReady(ready)
+    function addDKGMPKReady(bytes memory MPKReady) public {
     }
 
-    // AddDKGFinalize(round, finalize)
-    function addDKGFinalize(uint256 Round, bytes memory Finalize) public {
+    // AddDKGFinalize(finalize)
+    function addDKGFinalize(bytes memory Finalize) public {
     }
 
     // Register(public_key, name, email, location, url)
