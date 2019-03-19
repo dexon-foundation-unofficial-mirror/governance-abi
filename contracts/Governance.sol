@@ -12,7 +12,7 @@ contract Governance {
         string location;
         string url;
         uint256 unstaked;
-        uint256 unstaked_at;
+        uint256 unstakedAt;
     }
 
     // ReportType.
@@ -40,95 +40,98 @@ contract Governance {
     // 5: stores the array index + 1 of nodes by address represented by node key.
     mapping(address => int256) public nodesOffsetByNodeKeyAddress;
 
-    // 6: crsRound.
+    // 6: last proposed blockheight.
+    mapping(address => uint256) public lastProposedHeight;
+
+    // 7: crsRound.
     uint256 public crsRound;
 
-    // 7: crs.
+    // 8: crs.
     bytes32 public crs;
 
-    // 8: dkgRound.
+    // 9: dkgRound.
     uint256 public dkgRound;
 
-    // 9: dkgResetCount.
+    // 10: dkgResetCount.
     uint256[] public dkgResetCount;
 
-    // 10: dkgMasterPublicKeys
+    // 11: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 11: dkgMasterPublicKeyProposed
+    // 12: dkgMasterPublicKeyProposed
     mapping(bytes32 => bool) public dkgMasterPublicKeyProposed;
 
-    // 12: dkgComplaints
+    // 13: dkgComplaints
     bytes[] public dkgComplaints;
 
-    // 13: dkgComplaintsProposed
+    // 14: dkgComplaintsProposed
     mapping(bytes32 => bool) public dkgComplaintsProposed;
 
-    // 14: dkgMPKReadys
+    // 15: dkgMPKReadys
     mapping(address => bool) public dkgMPKReadys;
 
-    // 15: dkgMPKReadysCount
+    // 16: dkgMPKReadysCount
     uint256 public dkgMPKReadysCount;
 
-    // 16: dkgFinalizeds
+    // 17: dkgFinalizeds
     mapping(address => bool) public dkgFinalizeds;
 
-    // 17: dkgFinalizedsCount
+    // 18: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 18: owner address.
+    // 19: owner address.
     address public owner;
 
-    // 19: minStake
+    // 20: minStake
     uint256 public minStake;
 
-    // 20: lockupPeriod
+    // 21: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 21: miningVelocity.
+    // 22: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 22: nextHalvingSupply.
+    // 23: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 23: lastHalvedAmount.
+    // 24: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 24: min gas price.
+    // 25: min gas price.
     uint256 public minGasPrice;
 
-    // 25: blockGasLimit.
+    // 26: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 26: BA.
+    // 27: BA.
     uint256 public lambdaBA;
-    // 27: DKG.
+    // 28: DKG.
     uint256 public lambdaDKG;
 
     // Set related.
-    // 28: notary set size
+    // 29: notary set size
     uint256 public notarySetSize;
 
-    // 29: notary set parameter: alpha.
+    // 30: notary set parameter: alpha.
     uint256 public notaryParamAlpha;  // stored as notaryParamAlpha * 10^8
 
-    // 30: notary set parameter: beta.
+    // 31: notary set parameter: beta.
     uint256 public notaryParamBeta;  // stored as notaryParamBeta * 10^8
 
-    // 31: DKG set size.
+    // 32: DKG set size.
     uint256 public dkgSetSize;
 
-    // 32: roundLength.
+    // 33: roundLength.
     uint256 public roundLength;
 
-    // 33: minBlockInterval.
+    // 34: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 34: Fine value.
+    // 35: Fine value.
     uint256[] public fineValues;
 
-    // 35: Fined records.
+    // 36: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
