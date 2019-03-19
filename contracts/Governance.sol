@@ -144,6 +144,7 @@ contract Governance {
     // -------
     event ConfigurationChanged();
     event CRSProposed(uint256 indexed Round, bytes32 CRS);
+    event NodeOwnershipTransfered(address indexed NodeAddress, address indexed NewOwnerAddress);
     event Staked(address indexed NodeAddress, uint256 Amount);
     event Unstaked(address indexed NodeAddress, uint256 Amount);
     event Withdrawn(address indexed NodeAddress, uint256 Amount);
