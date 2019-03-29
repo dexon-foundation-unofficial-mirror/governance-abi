@@ -17,6 +17,8 @@ contract Governance {
 
     // ReportType.
     enum ReportType {
+        FAIL_STOP,
+        FAIL_STOP_DKG,
         INVALID_DKG,
         FORK_VOTE,
         FORK_BLOCK
@@ -153,7 +155,7 @@ contract Governance {
     event Withdrawn(address indexed NodeAddress, uint256 Amount);
     event NodeAdded(address indexed NodeAddress);
     event NodeRemoved(address indexed NodeAddress);
-    event ForkReported(address indexed NodeAddress, uint256 Type, bytes Arg1, bytes Arg2);
+    event Reported(address indexed NodeAddress, uint256 Type, bytes Arg1, bytes Arg2);
     event Fined(address indexed NodeAddress, uint256 Amount);
     event FinePaid(address indexed NodeAddress, uint256 Amount);
     event DKGReset(uint256 indexed Round, uint256 BlockHeight);
