@@ -147,6 +147,7 @@ contract Governance {
     event ConfigurationChanged();
     event CRSProposed(uint256 indexed Round, bytes32 CRS);
     event NodeOwnershipTransfered(address indexed NodeAddress, address indexed NewOwnerAddress);
+    event NodePublicKeyReplaced(address indexed NodeAddress, bytes PublicKey);
     event Staked(address indexed NodeAddress, uint256 Amount);
     event Unstaked(address indexed NodeAddress, uint256 Amount);
     event Withdrawn(address indexed NodeAddress, uint256 Amount);
@@ -179,6 +180,10 @@ contract Governance {
 
     // transferNodeOwnership(newOwner)
     function transferNodeOwnership(address NewOwner) public {
+    }
+
+    // replaceNodePublicKey(newPublicKey)
+    function replaceNodePublicKey(bytes memory NewPublicKey) public {
     }
 
     // Return number of nodes.
