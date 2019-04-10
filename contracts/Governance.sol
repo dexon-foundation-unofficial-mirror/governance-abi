@@ -60,8 +60,8 @@ contract Governance {
     // 11: dkgMasterPublicKeys
     bytes[] public dkgMasterPublicKeys;
 
-    // 12: dkgMasterPublicKeyProposed
-    mapping(bytes32 => bool) public dkgMasterPublicKeyProposed;
+    // 12: dkgMasterPublicKeyOffset
+    mapping(bytes32 => uint256) public dkgMasterPublicKeyOffset;
 
     // 13: dkgComplaints
     bytes[] public dkgComplaints;
