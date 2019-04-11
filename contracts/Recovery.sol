@@ -7,29 +7,15 @@ contract Recovery is Ownable {
 
     mapping(uint256 => address[]) public votes;
     mapping(uint256 => mapping(address => bool)) public voted;
-    mapping(address => uint256) public withdrawable;
 
     event VotedForRecovery(uint256 indexed height, address voter);
-    event Withdrawn(address indexed owner, uint256 amount);
 
     function setDeposit(uint256 DepositValue) public onlyOwner {
         depositValue = DepositValue;
     }
 
-    function refund(uint256 height, uint256 value) public onlyOwner {
-        for (uint i = 0; i < votes[height].length; i++) {
-            withdrawable[votes[height][i]] += value;
-        }
-    }
-
-    function withdraw() public {
-        require(withdrawable[msg.sender] > 0);
-
-        uint256 amount = withdrawable[msg.sender];
-        withdrawable[msg.sender] = 0;
-        msg.sender.transfer(amount);
-
-        emit Withdrawn(msg.sender, amount);
+    function withdraw() public onlyOwner {
+        msg.sender.transfer(address(this).balance);
     }
 
     function voteForSkipBlock(uint256 height) public payable {
