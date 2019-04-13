@@ -81,56 +81,62 @@ contract Governance {
     // 18: dkgFinalizedsCount
     uint256 public dkgFinalizedsCount;
 
-    // 19: owner address.
+    // 19: dkgSuccesses
+    mapping(address => bool) public dkgSuccesses;
+
+    // 20: dkgSuccessesCount
+    uint256 public dkgSuccessesCount;
+
+    // 21: owner address.
     address public owner;
 
-    // 20: minStake
+    // 22: minStake
     uint256 public minStake;
 
-    // 21: lockupPeriod
+    // 23: lockupPeriod
     uint256 public lockupPeriod;
 
-    // 22: miningVelocity.
+    // 24: miningVelocity.
     uint256 public miningVelocity;  // stored as miningVelocity * 10^8
 
-    // 23: nextHalvingSupply.
+    // 25: nextHalvingSupply.
     uint256 public nextHalvingSupply;
 
-    // 24: lastHalvedAmount.
+    // 26: lastHalvedAmount.
     uint256 public lastHalvedAmount;
 
-    // 25: min gas price.
+    // 27: min gas price.
     uint256 public minGasPrice;
 
-    // 26: blockGasLimit.
+    // 28: blockGasLimit.
     uint256 public blockGasLimit;
 
     // Lambda related.
-    // 27: BA.
+    // 29: BA.
     uint256 public lambdaBA;
-    // 28: DKG.
+    // 30: DKG.
     uint256 public lambdaDKG;
 
     // Set related.
-    // 29: notary set size
+    // 31: notary set size
     uint256 public notarySetSize;
 
-    // 30: notary set parameter: alpha.
+    // 32: notary set parameter: alpha.
     uint256 public notaryParamAlpha;  // stored as notaryParamAlpha * 10^8
 
-    // 31: notary set parameter: beta.
+    // 33: notary set parameter: beta.
     uint256 public notaryParamBeta;  // stored as notaryParamBeta * 10^8
 
-    // 32: roundLength.
+    // 34: roundLength.
     uint256 public roundLength;
 
-    // 33: minBlockInterval.
+    // 35: minBlockInterval.
     uint256 public minBlockInterval;
 
-    // 34: Fine value.
+    // 36: Fine value.
     uint256[] public fineValues;
 
-    // 35: Fined records.
+    // 37: Fined records.
     mapping(bytes32 => bool) public finedRecords;
 
     // ----------
@@ -208,6 +214,10 @@ contract Governance {
 
     // AddDKGFinalize(finalize)
     function addDKGFinalize(bytes memory Finalize) public {
+    }
+
+    // AddDKGSuccess(success)
+    function addDKGSuccess(bytes memory Success) public {
     }
 
     // Register(public_key, name, email, location, url)
