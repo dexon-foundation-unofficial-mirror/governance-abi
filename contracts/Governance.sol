@@ -238,6 +238,10 @@ contract Governance {
     function withdraw() public {
     }
 
+    // Withdrawable()
+    function withdrawable() public view returns (bool) {
+    }
+
     // PayFine(node)
     function payFine(address NodeAddress) public payable {
     }
