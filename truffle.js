@@ -40,6 +40,12 @@ module.exports = {
       host: "localhost",
       port: 8545,
       gas: 4712388
+    },
+    smoke: {
+      network_id: '*',
+      host: "localhost",
+      port: 8645,
+      gas: 4712388
     }
   },
 };
