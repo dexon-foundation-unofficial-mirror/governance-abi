@@ -188,6 +188,10 @@ contract Governance {
     function transferNodeOwnership(address NewOwner) public {
     }
 
+    // transferNodeOwnershipByFoundation(oldOwner, newOwner)
+    function transferNodeOwnershipByFoundation(address OldOwner, address NewOwner) public {
+    }
+
     // replaceNodePublicKey(newPublicKey)
     function replaceNodePublicKey(bytes memory NewPublicKey) public {
     }
